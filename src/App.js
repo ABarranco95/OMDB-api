@@ -1,4 +1,3 @@
-
 import './App.css';
 import { useEffect, useState } from 'react'
 
@@ -14,6 +13,7 @@ function App() {
   const getMoviesBySearchTerm = async (search) => {
     const response = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${process.env.REACT_APP_API_KEY}`)
     const data = await response.json()
+    return data.Search
     console.log(data);
 }
 
@@ -26,12 +26,10 @@ function App() {
   
 
   return (
-    <div>
-      <h1>OMDb Movies</h1>
-
-      <div className='movie-list'>
-        
-      </div>
+    <div className='app'>
+        {movies.map((movie) => (
+          <MovieCard key={movie.imdbID} title={movie.Title} type={movie.Type} poster={movie.Poster}/>
+        ))}
     </div>
   )
 

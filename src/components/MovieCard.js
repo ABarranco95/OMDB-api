@@ -1,10 +1,15 @@
 import React from 'react'
 
-const MovieCard = () => {
+const MovieCard = ( {id, title, type, poster} ) => {
     return (
-        <div className='movie'>
-            This is a movie component
+        <div className='movie-card' id={id}>
+          
+            <h2>{title}</h2>
+            <img src={poster} />
+            <button>{type}</button>
+            
         </div>
+        
     )
 }
 
